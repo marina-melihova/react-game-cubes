@@ -4,7 +4,7 @@ import { gameSelectors, gameSlice } from '../redux/game';
 import FinalForm from './FinalForm';
 import Modal from './Modal';
 
-const initCountCubes = 75;
+const initCountCubes = 35;
 
 const Header = () => {
   const start = useSelector(state => gameSelectors.getGamePhase(state));
@@ -62,6 +62,7 @@ const Header = () => {
                   type="button"
                   className="btn btn-primary mr-2 mr-md-3"
                   onClick={onStart}
+                  disabled={!secondsLeft}
                 >
                   {start ? 'PAUSE' : 'START'}
                 </button>
@@ -91,7 +92,9 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="d-none d-md-block col-md-3">Rules</div>
+          <div className="d-none d-md-block col-md-3 pr-3 pt-3 pt-lg-4">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit
+          </div>
         </div>
       </header>
       {isShowModal && (

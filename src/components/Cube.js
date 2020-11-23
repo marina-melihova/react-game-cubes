@@ -2,12 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { gameSelectors, gameReducer, gameSlice } from '../redux/game';
 
-const stateCube = {
-  EMPTY: 0,
-  CLICKABLE: 1,
-};
-
-export const Cube = ({ cell }) => {
+const Cube = ({ cell }) => {
   const dispatch = useDispatch();
   const start = useSelector(state => gameSelectors.getGamePhase(state));
   const indexes = useSelector(state => gameSelectors.getCubes(state));
@@ -16,7 +11,7 @@ export const Cube = ({ cell }) => {
 
   useEffect(() => {
     if (state === stateCube.CLICKABLE) {
-      setBgColor(getRandomColor());
+      setBgColor(colors[Math.floor(Math.random() * 15)]);
     } else {
       setBgColor('transparent');
     }
@@ -50,6 +45,31 @@ export const Cube = ({ cell }) => {
     ></div>
   );
 };
+
+export default Cube;
+
+const stateCube = {
+  EMPTY: 0,
+  CLICKABLE: 1,
+};
+
+const colors = [
+  '#FFCC00',
+  '#663300',
+  '#CC3300',
+  '#FF0000',
+  '#CC6666',
+  '#990033',
+  '#9933CC',
+  '#660099',
+  '#0000FF',
+  '#006666',
+  '#33CCFF',
+  '#FF9900',
+  '#00FFFF',
+  '#00CC00',
+  '#99FF00',
+];
 
 function getRandomColor() {
   var letters = '0123456789ABCDEF';

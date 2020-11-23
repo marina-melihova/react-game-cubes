@@ -9,9 +9,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: calc(100% + 0.5vw);
-  // @include media-breakpoint-up(md) {
-  //   @include rfs(20);
-  // }
 }
 
 code {
@@ -20,11 +17,11 @@ code {
 }
 
 .table {
-  // font-size: 1rem;
   @include media-breakpoint-up(lg) {
     font-size: calc(1rem + 0.25vw);
   }
 }
+
 .area {
   margin: 0 auto;
   width: 90vw;
@@ -37,9 +34,6 @@ code {
     width: 70vw;
     height: 70vw;
   }
-
-  border-right: 1px solid silver;
-  border-bottom: 1px solid silver;
 }
 
 .area-row {
@@ -48,12 +42,9 @@ code {
 }
 
 .cube {
-  background: '#00000000'; /* 'transparent' */
   margin: 0px;
   color: white;
   font-weight: bold;
   flex: 1 0 auto;
   position: relative;
-  border-left: 1px solid silver;
-  border-top: 1px solid silver;
 }

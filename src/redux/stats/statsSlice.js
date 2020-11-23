@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const addRecord = (state, { payload }) => {
-  // state.push(payload);
-  return [...state, payload];
-};
+const addRecord = (state, { payload }) => [...state, payload];
 
 const score = createSlice({
   name: 'stats',

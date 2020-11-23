@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Cube, stateCube } from './Cube';
+import Cube from './Cube';
 
 const Playground = () => {
   const renderRow = (row, i) => {

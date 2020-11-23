@@ -3,7 +3,6 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
-// import { persistStore, persistReducer } from 'redux-persist';
 import {
   persistStore,
   persistReducer,

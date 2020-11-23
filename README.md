@@ -11,4 +11,6 @@
 нажатии кнопки “OK” (“Сохранить”) в табличке результатов добавляется строка с
 введённым именем игрока и соответствующим кол-вом очков.
 
-[Демо](https://marina-melihova.github.io/react-game-cubes).
+**React Hooks, Redux, ES6, SASS, Bootstrap**
+
+[Демо](https://marina-melihova.github.io/react-game-cubes)
