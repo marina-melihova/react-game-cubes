@@ -52,7 +52,7 @@ const Header = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [start, seconds]);
+  }, [start, seconds, dispatch]);
 
   return (
     <>

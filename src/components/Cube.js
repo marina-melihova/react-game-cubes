@@ -26,7 +26,7 @@ const Cube = ({ cell }) => {
     } else {
       setState(stateCube.EMPTY);
     }
-  }, [seconds, indexes]);
+  }, [seconds, indexes, cell]);
 
   const handleClick = e => {
     const cubeIndex = Number(e.target.dataset.index);
