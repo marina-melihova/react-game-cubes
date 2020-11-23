@@ -63,8 +63,8 @@ const Cube = ({ cell }) => {
         data-index={cell}
         style={{
           backgroundColor,
-          width: size ? '50%' : '100%',
-          height: size ? '50%' : '100%',
+          width: size ? '50%' : '90%',
+          height: size ? '50%' : '90%',
         }}
         onClick={handleClick}
       ></div>
