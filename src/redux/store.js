@@ -2,7 +2,7 @@ import {
   combineReducers,
   configureStore,
   getDefaultMiddleware,
-} from '@reduxjs/toolkit';
+} from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -12,13 +12,13 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { gameSlice } from './game';
-import { statsSlice } from './stats';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { gameSlice } from "./game";
+import { statsSlice } from "./stats";
 
 const gamePersistConfig = {
-  key: 'game',
+  key: "game",
   storage,
 };
 
@@ -32,9 +32,8 @@ const gameReducer = combineReducers({
 const gamePersistedReducer = persistReducer(gamePersistConfig, gameReducer);
 
 const statsPersistConfig = {
-  key: 'stats',
+  key: "stats",
   storage,
-  whitelist: ['score'],
 };
 
 const statsReducer = combineReducers({
