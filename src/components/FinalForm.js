@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { gameSelectors } from '../redux/game';
-import { statsSlice } from '../redux/stats';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { gameSelectors } from "../redux/game";
+import { statsSlice } from "../redux/stats";
 
 const FinalForm = ({ closeModal }) => {
   const score = useSelector(gameSelectors.getPoints);
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const handleSubmit = e => {
+  const [name, setName] = useState("");
+  const handleSubmit = (e) => {
     e.preventDefault();
     const record = { name, score };
     dispatch(statsSlice.score.actions.inputName(record));
@@ -36,8 +36,8 @@ const FinalForm = ({ closeModal }) => {
           className="form-control"
         />
       </div>
-      <button type="submit" className="btn btn-primary mx-auto">
-        Save
+      <button type="submit" className="btn-bg btn-primary mx-auto">
+        SAVE
       </button>
     </form>
   );
