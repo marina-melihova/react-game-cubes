@@ -36,7 +36,7 @@ const points = createSlice({
   name: 'game',
   initialState: 0,
   reducers: {
-    addPoint: state => state + 1,
+    addPoint: (state, { payload }) => state + payload,
     resetGame: () => 0,
   },
 });

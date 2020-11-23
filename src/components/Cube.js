@@ -32,8 +32,18 @@ const Cube = ({ cell }) => {
       return;
     }
     if (start) {
+      switch (backgroundColor) {
+        case '#FF0000':
+          dispatch(gameSlice.points.actions.addPoint(5));
+          break;
+        case '#00CC00':
+          dispatch(gameSlice.points.actions.addPoint(3));
+          break;
+        default:
+          dispatch(gameSlice.points.actions.addPoint(1));
+      }
+
       dispatch(gameSlice.cubes.actions.removeCube(cubeIndex));
-      dispatch(gameSlice.points.actions.addPoint());
       const count = Math.floor(Math.random() * 3);
       dispatch(gameSlice.cubes.actions.initCubes(count));
     }
