@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-game-cubes/static/css/main.c75de350.chunk.css",
+    "main.js": "/react-game-cubes/static/js/main.c6d36b1e.chunk.js",
+    "main.js.map": "/react-game-cubes/static/js/main.c6d36b1e.chunk.js.map",
+    "runtime-main.js": "/react-game-cubes/static/js/runtime-main.4655609c.js",
+    "runtime-main.js.map": "/react-game-cubes/static/js/runtime-main.4655609c.js.map",
+    "static/js/2.d9def55c.chunk.js": "/react-game-cubes/static/js/2.d9def55c.chunk.js",
+    "static/js/2.d9def55c.chunk.js.map": "/react-game-cubes/static/js/2.d9def55c.chunk.js.map",
+    "index.html": "/react-game-cubes/index.html",
+    "static/css/main.c75de350.chunk.css.map": "/react-game-cubes/static/css/main.c75de350.chunk.css.map",
+    "static/js/2.d9def55c.chunk.js.LICENSE.txt": "/react-game-cubes/static/js/2.d9def55c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4655609c.js",
+    "static/js/2.d9def55c.chunk.js",
+    "static/css/main.c75de350.chunk.css",
+    "static/js/main.c6d36b1e.chunk.js"
+  ]
+}
