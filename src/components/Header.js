@@ -4,9 +4,12 @@ import { gameSelectors, gameSlice } from '../redux/game';
 import FinalForm from './FinalForm';
 import Modal from './Modal';
 
-function Header() {
+const initCountCubes = 75;
+
+const Header = () => {
   const start = useSelector(state => gameSelectors.getGamePhase(state));
   const points = useSelector(state => gameSelectors.getPoints(state));
+  const indexes = useSelector(state => gameSelectors.getCubes(state));
   const dispatch = useDispatch();
 
   const [isShowModal, setIsShowModal] = useState(false);
@@ -15,15 +18,16 @@ function Header() {
   };
   const onReset = () => {
     setSecondsLeft(60);
-    dispatch(gameSlice.points.actions.resetGame());
-    dispatch(gameSlice.cubes.actions.resetGame());
     if (start) {
       dispatch(gameSlice.phase.actions.toggleStart());
     }
+    dispatch(gameSlice.points.actions.resetGame());
+    dispatch(gameSlice.cubes.actions.resetGame());
+    dispatch(gameSlice.cubes.actions.initCubes(initCountCubes));
   };
   const onStart = () => {
-    if (!start) {
-      dispatch(gameSlice.cubes.actions.initCubes(35));
+    if (!indexes.length) {
+      dispatch(gameSlice.cubes.actions.initCubes(initCountCubes));
     }
     dispatch(gameSlice.phase.actions.toggleStart());
   };
@@ -48,59 +52,48 @@ function Header() {
 
   return (
     <>
-      <div className="jumbotron jumbotron-fluid py-3">
-        <div className="container">
-          <h1 className="display-6">Remove cubes</h1>
-          <div className="d-flex align-items-center justify-content-between">
-            <div>
-              <button
-                type="button"
-                className="btn btn-primary mr-3"
-                onClick={onStart}
-              >
-                {start ? 'PAUSE' : 'START'}
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary mr-5"
-                onClick={onReset}
-              >
-                NEW GAME
-              </button>
+      <header className="jumbotron jumbotron-fluid py-3">
+        <div className="row justify-content-between px-3 px-md-0 ">
+          <div className="col-12 col-md-8 pl-md-5">
+            <h1 className="display-6">Remove cubes</h1>
+            <div className="d-flex align-items-center justify-content-between text-center">
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-primary mr-2 mr-md-3"
+                  onClick={onStart}
+                >
+                  {start ? 'PAUSE' : 'START'}
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={onReset}
+                >
+                  NEW GAME
+                </button>
+              </div>
+              <div className="d-inline-flex flex-column">
+                Points
+                <span className="border border-secondary rounded-lg bg-white p-2">
+                  {points}
+                </span>
+              </div>
+              <div className="d-inline-flex flex-column">
+                Time left
+                <span className="border border-secondary rounded-lg bg-white p-2">
+                  {secondsLeft === 60 ? 1 : 0} :{' '}
+                  {secondsLeft === 60
+                    ? '00'
+                    : String(secondsLeft).padStart(2, '0')}
+                </span>
+              </div>
             </div>
-            <div className="d-inline-flex flex-column">
-              Points
-              <span className="border-secondary bg-white p-2">{points}</span>
-            </div>
-            {/* <label className="d-inline-flex flex-column mr-3">
-              Points
-              <input
-                type="text"
-                className="form-control-lg text-center border-secondary bg-white"
-                style={{ width: '3rem' }}
-                readOnly
-                defaultValue="74"
-              />
-            </label> */}
-            <div className="d-inline-flex flex-column">
-              Time left
-              <span className="border-secondary bg-white p-2">
-                {secondsLeft === 60 ? 1 : 0} :{' '}
-                {secondsLeft === 60
-                  ? '00'
-                  : String(secondsLeft).padStart(2, '0')}
-              </span>
-            </div>
-            {/* <input
-              type="text"
-              className="form-control-lg text-center border-secondary bg-white"
-              style={{ width: '5rem' }}
-              readOnly
-              defaultValue=`${minutes}:${seconds}`
-            /> */}
           </div>
+
+          <div className="d-none d-md-block col-md-3">Rules</div>
         </div>
-      </div>
+      </header>
       {isShowModal && (
         <Modal closeModal={closeForm}>
           <FinalForm closeModal={closeForm} />
@@ -108,6 +101,6 @@ function Header() {
       )}
     </>
   );
-}
+};
 
 export default Header;

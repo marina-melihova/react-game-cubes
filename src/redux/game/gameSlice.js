@@ -8,16 +8,7 @@ const phase = createSlice({
   },
 });
 
-// const reset = createSlice({
-//   name: 'game',
-//   initialState: false,
-//   reducers: {
-//     resetGame: state => !state,
-//   },
-// });
-
 const randomizeIndexes = (state, { payload }) => {
-  // const countCubes = 10;
   const indexes = [];
   while (indexes.length !== payload) {
     const i = Math.floor(Math.random() * 100);

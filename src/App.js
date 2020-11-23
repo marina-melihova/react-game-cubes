@@ -5,19 +5,19 @@ import ResultsList from './components/ResultsList';
 
 const App = () => {
   return (
-    <div className="container-fluid">
+    <>
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12 col-sm-9 mb-5 mb-sm-0">
+          <div className="col-12 col-lg-9 mb-5 mb-lg-0">
             <Playground />
           </div>
-          <div className="col-12 col-sm-3">
+          <div className="col-12 col-lg-3">
             <ResultsList />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
