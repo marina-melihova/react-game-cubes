@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-game-cubes/static/css/main.30c8aff2.chunk.css",
-    "main.js": "/react-game-cubes/static/js/main.0d5bb2b3.chunk.js",
-    "main.js.map": "/react-game-cubes/static/js/main.0d5bb2b3.chunk.js.map",
+    "main.js": "/react-game-cubes/static/js/main.c4d9f8d4.chunk.js",
+    "main.js.map": "/react-game-cubes/static/js/main.c4d9f8d4.chunk.js.map",
     "runtime-main.js": "/react-game-cubes/static/js/runtime-main.4655609c.js",
     "runtime-main.js.map": "/react-game-cubes/static/js/runtime-main.4655609c.js.map",
     "static/js/2.62153d14.chunk.js": "/react-game-cubes/static/js/2.62153d14.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.4655609c.js",
     "static/js/2.62153d14.chunk.js",
     "static/css/main.30c8aff2.chunk.css",
-    "static/js/main.0d5bb2b3.chunk.js"
+    "static/js/main.c4d9f8d4.chunk.js"
   ]
 }
