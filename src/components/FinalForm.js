@@ -4,7 +4,7 @@ import { gameSelectors } from '../redux/game';
 import { statsSlice } from '../redux/stats';
 
 const FinalForm = ({ closeModal }) => {
-  const score = useSelector(state => gameSelectors.getPoints(state));
+  const score = useSelector(gameSelectors.getPoints);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const handleSubmit = e => {
@@ -19,7 +19,7 @@ const FinalForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-5">
+    <form onSubmit={handleSubmit} className="d-flex flex-column p-5">
       <div className="mb-5">
         Your score: <span>{score}</span>
       </div>
@@ -36,7 +36,6 @@ const FinalForm = ({ closeModal }) => {
           className="form-control"
         />
       </div>
-
       <button type="submit" className="btn btn-primary mx-auto">
         Save
       </button>

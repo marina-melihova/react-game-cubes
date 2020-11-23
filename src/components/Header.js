@@ -7,10 +7,10 @@ import Modal from './Modal';
 const initCountCubes = 35;
 
 const Header = () => {
-  const start = useSelector(state => gameSelectors.getGamePhase(state));
-  const points = useSelector(state => gameSelectors.getPoints(state));
-  const indexes = useSelector(state => gameSelectors.getCubes(state));
-  const seconds = useSelector(state => gameSelectors.getTime(state));
+  const start = useSelector(gameSelectors.getGamePhase);
+  const points = useSelector(gameSelectors.getPoints);
+  const indexes = useSelector(gameSelectors.getCubes);
+  const seconds = useSelector(gameSelectors.getTime);
   const dispatch = useDispatch();
 
   const [isShowModal, setIsShowModal] = useState(false);
@@ -95,7 +95,6 @@ const Header = () => {
               </div>
             </div>
           </div>
-
           <div className="d-none d-md-block col-md-3 pt-2 pt-lg-4">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit
           </div>

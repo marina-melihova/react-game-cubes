@@ -4,7 +4,7 @@ import { statsSelectors } from '../redux/stats';
 import { v4 as uuidv4 } from 'uuid';
 
 const ResultsList = () => {
-  const results = useSelector(state => statsSelectors.getResults(state));
+  const results = useSelector(statsSelectors.getResults);
   return (
     <table className="table table-striped">
       <thead>

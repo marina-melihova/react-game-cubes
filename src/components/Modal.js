@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useCallback } from 'react';
-import styled from 'styled-components';
 
 const Modal = ({ children, closeModal }) => {
   const refModal = useRef();
 
   const handleClick = useCallback(
     ({ target }) => {
-      if (refModal.current !== target) return;
+      if (refModal.current !== target) {
+        return;
+      }
       closeModal();
     },
     [closeModal],
@@ -32,25 +33,16 @@ const Modal = ({ children, closeModal }) => {
   }, [closeModalKeydown]);
 
   return (
-    <ModalOverlay ref={refModal} onClick={handleClick}>
+    <div
+      className="position-fixed d-flex justify-content-center align-items-center overlay w-100 h-100"
+      ref={refModal}
+      onClick={handleClick}
+    >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">{children}</div>
       </div>
-    </ModalOverlay>
+    </div>
   );
 };
 
 export default Modal;
-
-const ModalOverlay = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: rgb(128, 128, 128, 0.65);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

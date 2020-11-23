@@ -4,9 +4,9 @@ import { gameSelectors, gameSlice } from '../redux/game';
 
 const Cube = ({ cell }) => {
   const dispatch = useDispatch();
-  const start = useSelector(state => gameSelectors.getGamePhase(state));
-  const indexes = useSelector(state => gameSelectors.getCubes(state));
-  const seconds = useSelector(state => gameSelectors.getTime(state));
+  const start = useSelector(gameSelectors.getGamePhase);
+  const indexes = useSelector(gameSelectors.getCubes);
+  const seconds = useSelector(gameSelectors.getTime);
   const [state, setState] = useState(stateCube.EMPTY);
   const [backgroundColor, setBgColor] = useState('transparent');
   const [size, setSize] = useState(0);
@@ -33,10 +33,12 @@ const Cube = ({ cell }) => {
     if (!indexes.includes(cubeIndex)) {
       return;
     }
+
     let amount = 1;
     if (size) {
       amount = 5;
     }
+
     if (start) {
       switch (backgroundColor) {
         case '#FF0000':
