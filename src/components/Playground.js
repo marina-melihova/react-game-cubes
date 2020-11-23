@@ -9,7 +9,7 @@ const Playground = () => {
     });
 
     return (
-      <div key={i} className="area-row">
+      <div key={i} className="flex-grow-1 d-flex ">
         {columns}
       </div>
     );
@@ -23,7 +23,7 @@ const Playground = () => {
     });
     rows.push(renderRow(row, i));
   });
-  return <div className="area">{rows}</div>;
+  return <div className="area d-flex flex-column mx-auto">{rows}</div>;
 };
 
 export default Playground;

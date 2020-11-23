@@ -10,7 +10,6 @@ const FinalForm = ({ closeModal }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const record = { name, score };
-    console.log('record', record);
     dispatch(statsSlice.score.actions.inputName(record));
     closeModal();
   };

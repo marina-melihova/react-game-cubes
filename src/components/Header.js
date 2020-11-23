@@ -18,9 +18,7 @@ const Header = () => {
     setIsShowModal(prev => !prev);
   };
 
-  // const [secondsLeft, setSecondsLeft] = useState(60);
   const onReset = () => {
-    // setSecondsLeft(60);
     dispatch(gameSlice.seconds.actions.resetGame());
     if (start) {
       dispatch(gameSlice.phase.actions.toggleStart());
@@ -44,7 +42,6 @@ const Header = () => {
     let timer;
     if (seconds > 0 && start) {
       timer = setTimeout(() => {
-        // setSecondsLeft(secondsLeft - 1);
         dispatch(gameSlice.seconds.actions.updateTime());
       }, 1000);
     }

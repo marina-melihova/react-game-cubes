@@ -9,12 +9,14 @@ const Cube = ({ cell }) => {
   const seconds = useSelector(state => gameSelectors.getTime(state));
   const [state, setState] = useState(stateCube.EMPTY);
   const [backgroundColor, setBgColor] = useState('transparent');
-
+  const [size, setSize] = useState(0);
   useEffect(() => {
     if (state === stateCube.CLICKABLE) {
       setBgColor(colors[Math.floor(Math.random() * 15)]);
+      setSize(Math.floor(Math.random() * 2));
     } else {
       setBgColor('transparent');
+      setSize(0);
     }
   }, [state]);
 
@@ -31,16 +33,20 @@ const Cube = ({ cell }) => {
     if (!indexes.includes(cubeIndex)) {
       return;
     }
+    let amount = 1;
+    if (size) {
+      amount = 5;
+    }
     if (start) {
       switch (backgroundColor) {
         case '#FF0000':
-          dispatch(gameSlice.points.actions.addPoint(5));
+          dispatch(gameSlice.points.actions.addPoint(amount + 5));
           break;
         case '#00CC00':
-          dispatch(gameSlice.points.actions.addPoint(3));
+          dispatch(gameSlice.points.actions.addPoint(amount + 3));
           break;
         default:
-          dispatch(gameSlice.points.actions.addPoint(1));
+          dispatch(gameSlice.points.actions.addPoint(amount));
       }
 
       dispatch(gameSlice.cubes.actions.removeCube(cubeIndex));
@@ -50,12 +56,17 @@ const Cube = ({ cell }) => {
   };
 
   return (
-    <div
-      className="cube"
-      style={{ backgroundColor }}
-      data-index={cell}
-      onClick={handleClick}
-    ></div>
+    <div className="flex-grow-1 d-flex align-items-center justify-content-center">
+      <div
+        data-index={cell}
+        style={{
+          backgroundColor,
+          width: size ? '50%' : '100%',
+          height: size ? '50%' : '100%',
+        }}
+        onClick={handleClick}
+      ></div>
+    </div>
   );
 };
 
