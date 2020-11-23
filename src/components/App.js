@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header';
-import Playground from './components/Playground';
-import ResultsList from './components/ResultsList';
+import Header from './Header';
+import Playground from './Playground';
+import ResultsList from './ResultsList';
 
 const App = () => {
   return (

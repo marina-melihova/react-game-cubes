@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { statsSelectors } from '../redux/stats';
 import { v4 as uuidv4 } from 'uuid';
 
-function ResultsList() {
+const ResultsList = () => {
   const results = useSelector(state => statsSelectors.getResults(state));
   return (
     <table className="table table-striped">
@@ -26,6 +26,6 @@ function ResultsList() {
       </tbody>
     </table>
   );
-}
+};
 
 export default ResultsList;

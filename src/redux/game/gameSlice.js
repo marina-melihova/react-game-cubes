@@ -41,4 +41,14 @@ const points = createSlice({
   },
 });
 
-export default { phase, cubes, points };
+const seconds = createSlice({
+  name: 'game',
+  initialState: -1,
+  reducers: {
+    startTimer: () => 60,
+    updateTime: state => state - 1,
+    resetGame: () => -1,
+  },
+});
+
+export default { phase, cubes, points, seconds };

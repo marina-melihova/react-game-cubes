@@ -10,14 +10,18 @@ const Header = () => {
   const start = useSelector(state => gameSelectors.getGamePhase(state));
   const points = useSelector(state => gameSelectors.getPoints(state));
   const indexes = useSelector(state => gameSelectors.getCubes(state));
+  const seconds = useSelector(state => gameSelectors.getTime(state));
   const dispatch = useDispatch();
 
   const [isShowModal, setIsShowModal] = useState(false);
   const closeForm = () => {
     setIsShowModal(prev => !prev);
   };
+
+  // const [secondsLeft, setSecondsLeft] = useState(60);
   const onReset = () => {
-    setSecondsLeft(60);
+    // setSecondsLeft(60);
+    dispatch(gameSlice.seconds.actions.resetGame());
     if (start) {
       dispatch(gameSlice.phase.actions.toggleStart());
     }
@@ -25,44 +29,47 @@ const Header = () => {
     dispatch(gameSlice.cubes.actions.resetGame());
     dispatch(gameSlice.cubes.actions.initCubes(initCountCubes));
   };
+
   const onStart = () => {
     if (!indexes.length) {
       dispatch(gameSlice.cubes.actions.initCubes(initCountCubes));
     }
+    if (seconds === -1) {
+      dispatch(gameSlice.seconds.actions.startTimer());
+    }
     dispatch(gameSlice.phase.actions.toggleStart());
   };
 
-  const [secondsLeft, setSecondsLeft] = useState(60);
   useEffect(() => {
-    let token;
-    if (start) {
-      token = setTimeout(() => {
-        setSecondsLeft(secondsLeft - 1);
+    let timer;
+    if (seconds > 0 && start) {
+      timer = setTimeout(() => {
+        // setSecondsLeft(secondsLeft - 1);
+        dispatch(gameSlice.seconds.actions.updateTime());
       }, 1000);
     }
-
-    if (secondsLeft === 0 && start) {
+    if (!seconds && start) {
       dispatch(gameSlice.phase.actions.toggleStart());
       setIsShowModal(true);
     }
     return () => {
-      clearTimeout(token);
+      clearTimeout(timer);
     };
-  }, [start, secondsLeft]);
+  }, [start, seconds]);
 
   return (
     <>
-      <header className="jumbotron jumbotron-fluid py-3">
-        <div className="row justify-content-between px-3 px-md-0 ">
-          <div className="col-12 col-md-8 pl-md-5">
-            <h1 className="display-6">Remove cubes</h1>
+      <header className="jumbotron jumbotron-fluid px-5 py-3">
+        <div className="row justify-content-between">
+          <div className="col-12 col-md-8">
+            <h1 className="display-6 mb-0">Remove cubes</h1>
             <div className="d-flex align-items-center justify-content-between text-center">
               <div>
                 <button
                   type="button"
                   className="btn btn-primary mr-2 mr-md-3"
                   onClick={onStart}
-                  disabled={!secondsLeft}
+                  disabled={!seconds}
                 >
                   {start ? 'PAUSE' : 'START'}
                 </button>
@@ -75,24 +82,24 @@ const Header = () => {
                 </button>
               </div>
               <div className="d-inline-flex flex-column">
-                Points
+                <span className="mb-2">Points</span>
                 <span className="border border-secondary rounded-lg bg-white p-2">
                   {points}
                 </span>
               </div>
               <div className="d-inline-flex flex-column">
-                Time left
+                <span className="mb-2">Time left</span>
                 <span className="border border-secondary rounded-lg bg-white p-2">
-                  {secondsLeft === 60 ? 1 : 0} :{' '}
-                  {secondsLeft === 60
+                  {seconds === 60 || seconds === -1 ? 1 : 0} :{' '}
+                  {seconds === 60 || seconds === -1
                     ? '00'
-                    : String(secondsLeft).padStart(2, '0')}
+                    : String(seconds).padStart(2, '0')}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="d-none d-md-block col-md-3 pr-3 pt-3 pt-lg-4">
+          <div className="d-none d-md-block col-md-3 pt-2 pt-lg-4">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit
           </div>
         </div>

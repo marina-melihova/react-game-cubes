@@ -17,11 +17,19 @@ import storage from 'redux-persist/lib/storage';
 import { gameSlice } from './game';
 import { statsSlice } from './stats';
 
+const gamePersistConfig = {
+  key: 'game',
+  storage,
+};
+
 const gameReducer = combineReducers({
   phase: gameSlice.phase.reducer,
   cubes: gameSlice.cubes.reducer,
   points: gameSlice.points.reducer,
+  seconds: gameSlice.seconds.reducer,
 });
+
+const gamePersistedReducer = persistReducer(gamePersistConfig, gameReducer);
 
 const statsPersistConfig = {
   key: 'stats',
@@ -37,7 +45,7 @@ const statsPersistedReducer = persistReducer(statsPersistConfig, statsReducer);
 
 const store = configureStore({
   reducer: {
-    game: gameReducer,
+    game: gamePersistedReducer,
     stats: statsPersistedReducer,
   },
   middleware: getDefaultMiddleware({

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { gameSelectors, gameSlice } from '../redux/game';
+import { gameSelectors } from '../redux/game';
 import { statsSlice } from '../redux/stats';
 
-function FinalForm({ closeModal }) {
+const FinalForm = ({ closeModal }) => {
   const score = useSelector(state => gameSelectors.getPoints(state));
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -43,6 +43,6 @@ function FinalForm({ closeModal }) {
       </button>
     </form>
   );
-}
+};
 
 export default FinalForm;
