@@ -36,7 +36,7 @@ const FinalForm = ({ closeModal }) => {
           className="form-control"
         />
       </div>
-      <button type="submit" className="btn-bg btn-primary mx-auto">
+      <button type="submit" className="btn btn-lg btn-primary mx-auto">
         SAVE
       </button>
     </form>
